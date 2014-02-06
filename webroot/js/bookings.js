@@ -30,6 +30,32 @@ $("#signOut").on("click", function(event) {
 	console.log('deleted cookie!');
 	window.location = "/";
 });
+$("#searchBooking").on("submit", function(event) {
+	event.preventDefault();
+	var $this = $(this);
+	var $start_time = $("#startTime").val();
+	var $end_time = $("#endTime").val();
+	if(empty($start_time) && empty($end_time )){
+		console.log("validation error!");
+	} else {
+		var searchData = {
+			start_ts: $("#startTime").val(),
+			end_ts: $("#endTime").val(),
+		};
+		console.log(searchData);
+		$.ajax({
+			url : "/api/booking/list",
+			type: "POST",
+			data: searchData,
+			success: function(data, textStatus, jqXHR){
+				console.log(data);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				console.log(textStatus);
+			}
+		});
+	}
+});
 function confirmDelete() {
 	var x;
 	var r=confirm("Press a button!");
