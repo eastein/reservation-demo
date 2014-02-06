@@ -1,5 +1,7 @@
 <?php
 
+require_once('mysqlidb.php');
+
 $adminpw = "hunter2";
 
 echo "hello world";
