@@ -28,7 +28,7 @@ $("#signOut").on("click", function(event) {
 	event.preventDefault();
 	del_cookie("password");
 	console.log('deleted cookie!');
-	window.location = "/admin";
+	window.location = "/";
 });
 function confirmDelete() {
 	var x;
