@@ -18,7 +18,7 @@ function handle_api() {
 
 
 	$response = array(
-		"data" => $data;
+		"data" => $data
 	);
 
 	if ($error) {
