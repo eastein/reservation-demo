@@ -81,10 +81,10 @@ function handle_api() {
 			$data = 'what';
 		case '/api/booking/list' :
 
-			if (!$summary && !$loggedin) {
+			/*if (!$summary && !$loggedin) {
 				$error = "You must be logged in to do that.";
 				break;
-			}
+			} */
 			$start_ts = intval($_POST['start_ts']);
 			$end_ts = intval($_POST['end_ts']);
 			//$data = $start_ts; break;

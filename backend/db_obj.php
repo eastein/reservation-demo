@@ -20,7 +20,7 @@ function write($start, $end, $name, $id=null) {
 
 function select($start=null, $end=null) {
 	global $db;
-	if(isset($start) && isset($end)) {
+	if($start && $end) {
 		$results = $db->rawQuery('SELECT * FROM `bookings` WHERE start <= '.$end.' AND end >= '.$start.'');
 
 		return $results;
