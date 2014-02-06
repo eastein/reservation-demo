@@ -24,6 +24,12 @@ $("#signIn").on("submit", function(event) {
 		}
 	});
 });
+$("#signOut").on("click", function(event) {
+	event.preventDefault();
+	del_cookie("password");
+	console.log('deleted cookie!');
+	window.location = "/admin";
+});
 function confirmDelete() {
 	var x;
 	var r=confirm("Press a button!");
@@ -33,6 +39,9 @@ function confirmDelete() {
 		x="You pressed Cancel!";
 	}
 	document.getElementById("demo").innerHTML=x;
+}
+function del_cookie(name){
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 $(".form_datetime").datetimepicker({
 	format: "MM dd, yyyy - HH:ii P",
