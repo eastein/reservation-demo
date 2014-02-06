@@ -75,8 +75,53 @@
 							</div>
 						</div>
 						<button type="submit" class="btn btn-primary" id="searchBookingBtn"><span class="glyphicon glyphicon-search"></span> Search</button>
-						<div class="alert alert-info">Up to {max} bookings found</div>
 					</form>
+					<div id="searchBookingResults">
+						<h3>Bookings Found:</h3>
+						<table class="table table-striped table-bordered table-hover">
+							<thead>
+								<tr>
+									<th class="text-center">ID</th>
+									<th>Name</th>
+									<th>Start Time</th>
+									<th>End Time</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="text-center">1</td>
+									<td>Mark</td>
+									<td>(time)</td>
+									<td>(time)</td>
+									<td class="text-right">
+										<a href="#" class="btn btn-default" role="button"><span class="glyphicon glyphicon-edit"></span></a>
+										<a class="btn btn-danger" role="button" onclick="confirmDelete()"><span class="glyphicon glyphicon-remove"></span></a>
+									</td>
+								</tr>
+								<tr>
+									<td class="text-center">2</td>
+									<td>Mark</td>
+									<td>(time)</td>
+									<td>(time)</td>
+									<td class="text-right">
+										<a href="#" class="btn btn-default" role="button"><span class="glyphicon glyphicon-edit"></span></a>
+										<a class="btn btn-danger" role="button"><span class="glyphicon glyphicon-remove"></span></a>
+									</td>
+								</tr>
+								<tr>
+									<td class="text-center">3</td>
+									<td>Mark</td>
+									<td>(time)</td>
+									<td>(time)</td>
+									<td class="text-right">
+										<a href="#" class="btn btn-default" role="button"><span class="glyphicon glyphicon-edit"></span></a>
+										<a href="#" class="btn btn-danger" role="button"><span class="glyphicon glyphicon-remove"></span></a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 				<div class="well">
 					<h2>10 Most Recent Bookings</h2>

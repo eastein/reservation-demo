@@ -1,5 +1,7 @@
 <?php
 
+require_once('db_obj.php');
+
 $adminpw = "hunter2";
 
 function handle_index() {
@@ -119,3 +121,4 @@ $results = $db->update('booking', $updateData);*/
 //delete
 /*$db->where('id', 1);
 if($db->delete('booking')) echo 'successfully deleted'; */
+
