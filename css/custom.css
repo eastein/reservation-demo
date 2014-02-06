@@ -1,0 +1,16 @@
+body {
+	padding-top: 50px;
+	padding-bottom: 20px;
+}
+h1 {
+	margin-bottom: 20px;
+}
+h2 {
+	margin-top: 0;
+}
+
+#searchBooking .btn,
+#createBooking .btn {
+	margin-top: 10px;
+}
+.alert { margin-top: 15px; margin-bottom: 0; }

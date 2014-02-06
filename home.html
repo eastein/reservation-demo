@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<title>Booking Demo</title>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Booking Demo</a>
+		</div>
+		<div class="navbar-collapse collapse">
+				<button type="button" class="pull-right btn btn-default navbar-btn">Sign in</button>
+		</div>
+		</div>
+	</div>
+	<div class="container">
+		<!-- Example row of columns -->
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Booking Demo</h1>
+				<div class="well">
+					<h2>Create a booking</h2>
+					<form role="form" id="createBooking">
+						<span class="help-block">To create a booking please fill out your name, and the start/end of your booking.</span>
+						<div class="form-group has-error">
+							<label class="control-label" for="nameInput">Name</label>
+							<input type="text" class="form-control" id="nameInput" placeholder="Enter Name">
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<label class="control-label" for="startTime">Start Time:</label>
+								<div class="input-group date form_datetime" data-date="2012-12-21T15:25:00Z">
+									<input class="form-control" id="startTime" type="text" value="" readonly>
+									<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label class="control-label" for="endTime">End Time:</label>
+								<div class="input-group date form_datetime" data-date="2012-12-21T15:25:00Z">
+									<input class="form-control" id="endTime" type="text" value="" readonly>
+									<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+								</div>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-primary" id="createBookingBtn"><span class="glyphicon glyphicon-plus"></span> Create booking</button>
+						<div class="alert alert-success">Success! Your booking has been created!</div>
+					</form>
+				</div>
+				<div class="well">
+					<h2>Search bookings</h2>
+					<form role="form" id="searchBooking">
+						<span class="help-block">Select a start/end time to search bookings.</span>
+						<div class="row">
+							<div class="col-md-6">
+								<label class="control-label" for="startTime">Start Time:</label>
+								<div class="input-group date form_datetime" data-date="2012-12-21T15:25:00Z">
+									<input class="form-control" id="startTime" type="text" value="" readonly>
+									<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label class="control-label" for="endTime">End Time:</label>
+								<div class="input-group date form_datetime" data-date="2012-12-21T15:25:00Z">
+									<input class="form-control" id="endTime" type="text" value="" readonly>
+									<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+								</div>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-primary" id="searchBookingBtn"><span class="glyphicon glyphicon-search"></span> Search</button>
+						<div class="alert alert-info">Up to {max} bookings found</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<footer>
+			<p>&copy; 2014</p>
+		</footer>
+	</div>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+  	<script type="text/javascript">
+		$(".form_datetime").datetimepicker({
+			format: "MM dd, yyyy - HH:ii P",
+			autoclose: true,
+			pickerPosition: "bottom-left",
+			todayBtn: false,
+			showMeridian: true
+		});
+	</script>
+</body>
+</html>
