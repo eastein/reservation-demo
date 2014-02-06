@@ -24,7 +24,10 @@ function generateRandomString($length = 10) {
 }
 
 function handle_api() {
-	$csrfcookie = $_COOKIE["csrftoken"];
+	global $adminpw;
+	$csrfcookie = null;
+	if (isset($_COOKIE["csrftoken"]))
+		$csrfcookie = $_COOKIE["csrftoken"];
 	
 	$data = false;
 	$error = null;
@@ -34,36 +37,52 @@ function handle_api() {
 
 	$data = 'hi';
 
-	header ("Content-Type", "application/json");
-
 
 	$csrftoken = $_COOKIE['csrftoken'];
 	if (!$csrftoken) {
 		$csrftoken = generateRandomString();
 	}
 
+	if (isset($_POST['password'])) {
+		$loggedin = $_POST['password'] == $adminpw;
+	} elseif (isset($_COOKIE['password']) && $_COOKIE['password'] == $adminpw) {
+		$loggedin = true;
+	} else {
+		$loggedin = false;
+	}
+
+
+	$summary = false;
 	switch ($_SERVER['REQUEST_URI']) {
 
 		case '/' :
-			header ("Content-Type", "text/html");
+			header ("Content-Type: text/html");
 			setcookie ("csrftoken", $csrftoken);
 			return handle_index();
 			break;
 		case '/admin' :
-			header ("Content-Type", "text/html");
+			header ("Content-Type: text/html");
 			setcookie ("csrftoken", $csrftoken);
 			return handle_admin();
 			break;
 		case '/api/login' :
-			$data = $_POST['password'] == $adminpw;
+			$data = $loggedin;
 			if (!$data) {
 				$error="Wrong password.";
 			} else {
 				setcookie ("password", $_POST["password"]);
 			}
 			break;
+		case '/api/booking/list/summary' :
+			$summary = true;
+			$data = 'what';
 		case '/api/booking/list' :
-			$data = array(array("hello" => "world"));
+
+			if (!$summary && !$loggedin) {
+				$error = "You must be logged in to do that.";
+				break;
+			}
+			$data = select(intval($_POST['start_ts']), intval($_POST['end_ts']));
 			break;
 		default:
 			echo "Unknown URI";
@@ -77,48 +96,11 @@ function handle_api() {
 		$response["error"] = $error;
 	}
 
+	header ("Content-Type: application/json");
+
 	setcookie ("csrftoken", $csrftoken);
 
 	echo json_encode($response);
 }
 
 handle_api();
-
-$db = new Mysqlidb('localhost', 'booking', 'booking', 'booking');
-
-//insert
-
-/*$insertData = array(
-	'start' => time(),
-	'end' => time(),
-	'name' => "John Doe"
-);
-
-if($db->insert('booking', $insertData)) echo 'success!';*/
-
-//select
-
-/*$results = $db->get('booking', 100);
-print_r($results);*/
-
-//select from time range
-
-/*
-$db->where('start', time());
-$db->where('end', time());
-$results = $db->get('booking');
-print_r($results);*/
-
-//update
-/*$updateData = array(
-	'start' => time(),
-	'end' => time(),
-	'name' => "John Doe"
-);
-$db->where('id', 1);
-$results = $db->update('booking', $updateData);*/
-
-//delete
-/*$db->where('id', 1);
-if($db->delete('booking')) echo 'successfully deleted'; */
-

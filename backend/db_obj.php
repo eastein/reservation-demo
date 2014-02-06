@@ -12,23 +12,24 @@ function write($start, $end, $name, $id=null) {
 
 	if($id) {
 		$this->db->where('id', $id);
-		$this->db->update('booking', $data);
-	} elseif($this->db->insert('booking', $data)) return true;
+		$this->db->update('bookings', $data);
+	} elseif($this->db->insert('bookings', $data)) return true;
 
 	return false;
 }
 
-function select($limit=0, $start=null, $end=null) {
+function select($start=null, $end=null) {
+	global $db;
 	if($start && $end) {
-		$this->db->where('start', $start);
-		$this->db->where('end', $end);
+		$db->where('start', $start);
+		$db->where('end', $end);
 	}
-	$results = $this->db->get('booking', $limit);
+	$results = $db->get('bookings');
 	return $results;
 }
 
 function delete($id) {
 	$this->db->where('id', 1);
-	if($this->db->delete('booking')) return true;
+	if($this->db->delete('bookings')) return true;
 	return false;
 }
