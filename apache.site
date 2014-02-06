@@ -11,6 +11,11 @@
                 AllowOverride None
                 Order allow,deny
                 allow from all
+
+		RewriteEngine on
+		RewriteCond %{REQUEST_FILENAME} !-d
+		RewriteCond %{REQUEST_FILENAME} !-f
+		RewriteRule . /home/eric/git/reservation-demo/webroot/index.php [L]
         </Directory>
 
         ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
@@ -21,7 +26,7 @@
                 Allow from all
         </Directory>
 
-        ErrorLog ${APACHE_LOG_DIR}/error.log
+        ErrorLog /home/eric/error.log
 
         # Possible values include: debug, info, notice, warn, error, crit,
         # alert, emerg.
