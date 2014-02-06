@@ -29,7 +29,8 @@ function select($start=null, $end=null) {
 }
 
 function delete($id) {
-	$this->db->where('id', 1);
-	if($this->db->delete('bookings')) return true;
+	global $db;
+	$db->where('id', $id);
+	if($db->delete('bookings')) return true;
 	return false;
 }
