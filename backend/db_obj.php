@@ -3,8 +3,6 @@ require_once('mysqlidb.php');
 
 $db = new Mysqlidb('localhost', 'booking', 'booking', 'booking');
 
-//insert
-
 function write($start, $end, $name, $id=null) {
 	$data = array(
 		'start' => $start,
