@@ -16,7 +16,7 @@ $("#signIn").on("submit", function(event) {
 			} else {
 				console.log('error');
 				console.log($this);
-				$this.find('form-group').addClass("has-error has-feedback").append('<span class="glyphicon glyphicon-remove form-control-feedback"></span>');
+				$this.find('.form-group').addClass("has-error has-feedback").append('<span class="glyphicon glyphicon-remove form-control-feedback"></span>');
 			}
 		},
 		error: function (jqXHR, textStatus, errorThrown) {
