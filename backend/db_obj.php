@@ -21,8 +21,9 @@ function write($start, $end, $name, $id=null) {
 function select($start=null, $end=null) {
 	global $db;
 	if($start && $end) {
-		$db->where('start', $start);
-		$db->where('end', $end);
+		$results = $db->rawQuery('SELECT * FROM `bookings` WHERE start <= '.$end.' AND end >= '.$start.'');
+
+		return $results;
 	}
 	$results = $db->get('bookings');
 	return $results;
