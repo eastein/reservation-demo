@@ -32,7 +32,12 @@
 				<a class="navbar-brand" href="#">Booking Demo</a>
 			</div>
 			<div class="navbar-collapse collapse">
-				<button type="button" class="pull-right btn btn-default navbar-btn">Sign in</button>
+				<form action="#" method="post" class="navbar-form navbar-right" id="signIn" role="form">
+					<div class="form-group">
+						<input type="password" id="signInPass" placeholder="Admin Password" class="form-control">
+					</div>
+					<button type="submit" id="signInBtn" class="btn btn-success">Sign in</button>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -103,14 +108,6 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
-  	<script type="text/javascript">
-		$(".form_datetime").datetimepicker({
-			format: "MM dd, yyyy - HH:ii P",
-			autoclose: true,
-			pickerPosition: "bottom-left",
-			todayBtn: false,
-			showMeridian: true
-		});
-	</script>
+	<script type="text/javascript" src="js/bookings.js"></script>
 </body>
 </html>

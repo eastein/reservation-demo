@@ -181,24 +181,6 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
-  	<script type="text/javascript">
-		function confirmDelete() {
-			var x;
-			var r=confirm("Press a button!");
-			if (r==true) {
-				x="You pressed OK!";
-			} else {
-				x="You pressed Cancel!";
-			}
-			document.getElementById("demo").innerHTML=x;
-		}
-		$(".form_datetime").datetimepicker({
-			format: "MM dd, yyyy - HH:ii P",
-			autoclose: true,
-			pickerPosition: "bottom-left",
-			todayBtn: false,
-			showMeridian: true
-		});
-	</script>
+	<script type="text/javascript" src="js/bookings.js"></script>
 </body>
 </html>
