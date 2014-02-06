@@ -63,6 +63,9 @@ function handle_api() {
 		case '/admin' :
 			header ("Content-Type: text/html");
 			setcookie ("csrftoken", $csrftoken);
+			if (!$loggedin) {
+				return handle_index();
+			}
 			return handle_admin();
 			break;
 		case '/api/login' :
@@ -82,7 +85,39 @@ function handle_api() {
 				$error = "You must be logged in to do that.";
 				break;
 			}
-			$data = select(intval($_POST['start_ts']), intval($_POST['end_ts']));
+			$start_ts = intval($_POST['start_ts']);
+			$end_ts = intval($_POST['end_ts']);
+			//$data = $start_ts; break;
+			$data = select($start_ts, $end_ts);
+
+			// FIXME do summary
+			break;
+		case '/api/booking/write' :
+			if (!isset($_POST['start_ts']))
+				$error = "start_ts required.";
+				break;
+			if (!isset($_POST['end_ts']))
+				$error = "end_ts required.";
+				break;
+			if (!isset($_POST['name']))
+				$error = "name required.";
+				break;
+			$start_ts = intval($_POST['start_ts']);
+			$end_ts = intval($_POST['end_ts']);
+			$name = stripslashes($_POST['name']);
+
+			$id = null;
+			if (isset($_POST['id'])) {
+				$id = intval($_POST['id']);
+			}
+
+			if ($id) {
+				if (!$loggedin) {
+					$error = "You must be logged in to do that.";
+					break;
+				}
+			}
+
 			break;
 		default:
 			echo "Unknown URI";
