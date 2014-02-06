@@ -1,7 +1,8 @@
 $("#signIn").on("submit", function(event) {
 	event.preventDefault();
+	var $this = $(this);
 	var loginData = {
-	    password: $(this).find("#signInPass").val() //hunter2
+	    password: $this.find("#signInPass").val() //hunter2
 	};
 	console.log(loginData);
 	$.ajax({
@@ -14,7 +15,7 @@ $("#signIn").on("submit", function(event) {
 				window.location = "/login";
 			} else {
 				console.log('error');
-				$(this).find('form-group').addClass("has-error has-feedback").append('<span class="glyphicon glyphicon-remove form-control-feedback"></span>');
+				$this.find('form-group').addClass("has-error has-feedback").append('<span class="glyphicon glyphicon-remove form-control-feedback"></span>');
 			}
 		},
 		error: function (jqXHR, textStatus, errorThrown) {
